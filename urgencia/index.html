@@ -137,14 +137,16 @@ body::after {
   justify-content: space-between;
 }
 .nav-logo {
-  display: flex; align-items: center; gap: 10px;
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none;
 }
-.nav-logo img {
-  height: 24px;
-  filter: brightness(0) invert(1);
+.nav-logo span {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px; font-weight: 700; letter-spacing: 0.05em;
+  color: var(--white); text-transform: uppercase;
 }
 .nav-logo .dot {
-  width: 8px; height: 8px; border-radius: 50%; background: var(--red);
+  width: 10px; height: 10px; border-radius: 50%; background: var(--red);
   box-shadow: 0 0 10px var(--red), 0 0 20px var(--red-glow);
   animation: pulse-dot 2s ease-in-out infinite;
 }
@@ -420,10 +422,10 @@ body::after {
 
 <!-- NAV -->
 <nav class="nav">
-  <div class="nav-logo">
+  <a href="../" class="nav-logo">
     <div class="dot"></div>
-    <img src="../GSC image.png" alt="Abogado Penalista Logo">
-  </div>
+    <span>BAP - BUSCOABOGADOPENALISTA.COM</span>
+  </a>
   <div class="nav-status">
     <span>LÍNEA DE GUARDIA ACTIVA</span>
   </div>

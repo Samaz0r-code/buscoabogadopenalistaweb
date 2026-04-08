@@ -66,8 +66,8 @@ setInterval(() => switchTestimonial((curT+1) % 3), 7000);
   if(!canvas) return;
   const ctx = canvas.getContext('2d');
   let W, H, nodes=[], animId;
-  const NODE_COUNT = 55;
-  const MAX_DIST = 160;
+  const NODE_COUNT = window.innerWidth < 768 ? 20 : 55;
+  const MAX_DIST = window.innerWidth < 768 ? 100 : 160;
 
   function resize(){
     W = canvas.width  = canvas.offsetWidth;
@@ -283,3 +283,21 @@ ${message}`;
     });
   }
 });
+
+// =================== HAMBURGER MENU (HOME) ===================
+(function(){
+  const btn = document.getElementById('hamburgerBtn');
+  const menu = document.getElementById('mobileMenu');
+  if(btn && menu){
+    btn.addEventListener('click', function(){
+      btn.classList.toggle('active');
+      menu.classList.toggle('open');
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        btn.classList.remove('active');
+        menu.classList.remove('open');
+      });
+    });
+  }
+})();

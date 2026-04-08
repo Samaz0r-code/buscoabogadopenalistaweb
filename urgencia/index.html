@@ -410,6 +410,186 @@ body::after {
 }
 .float-wa:hover { transform: scale(1.1); }
 .float-wa svg { width: 36px; height: 36px; fill: #fff; }
+
+/* ── HAMBURGER BUTTON ── */
+.hamburger {
+  display: none; background: none; border: none; cursor: pointer;
+  width: 32px; height: 24px; position: relative; z-index: 201;
+  flex-direction: column; justify-content: space-between;
+  padding: 0;
+}
+.hamburger span {
+  display: block; width: 100%; height: 2px; background: var(--red);
+  transition: all 0.3s ease; transform-origin: center;
+}
+.hamburger.active span:nth-child(1) { transform: translateY(11px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
+
+/* ── MOBILE MENU ── */
+.mobile-menu {
+  display: none; position: fixed; top: 52px; left: 0; right: 0;
+  background: rgba(0,0,0,0.98); backdrop-filter: blur(20px);
+  flex-direction: column; padding: 20px 24px 28px; z-index: 199;
+  border-bottom: 1px solid var(--border);
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu-cta {
+  display: block; background: var(--red); color: #fff; text-align: center;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none;
+  padding: 16px 20px; margin-bottom: 16px; border-radius: 4px;
+  box-shadow: 0 0 20px var(--red-glow);
+}
+.mobile-menu-status {
+  font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em;
+  color: var(--red); text-align: center; padding: 12px 0;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.mobile-menu-link {
+  display: block; font-family: 'Barlow Condensed', sans-serif; font-size: 14px;
+  font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--muted); text-decoration: none; padding: 16px 0; text-align: center;
+}
+
+/* ══════════════════════════════════════════════ */
+/* ══  MOBILE RESPONSIVE  ≤768px              ══ */
+/* ══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* ── TICKER: hidden ── */
+  .ticker-wrap { display: none; }
+
+  /* ── NAV: compact ── */
+  .nav {
+    top: 0; height: 52px; padding: 0 16px;
+  }
+  .nav-brand-mark { width: 40px; height: 28px; font-size: 12px; }
+  .nav-brand-name { font-size: 12px; letter-spacing: 0.08em; }
+  .nav-brand-sub { font-size: 8px; letter-spacing: 0.1em; }
+  .nav-status { display: none; }
+  .hamburger { display: flex; }
+
+  /* ── HERO: compact ── */
+  .hero {
+    padding: 80px 20px 50px; min-height: auto;
+  }
+  .hero-inner {
+    padding: 0 !important;
+  }
+  .hero-bg {
+    transform: scale(1); transform-origin: center;
+    filter: brightness(0.2) contrast(1.15) sepia(20%) saturate(1.1);
+  }
+  .live-badge {
+    font-size: 8px; letter-spacing: 0.2em;
+    padding: 5px 10px; margin-bottom: 24px !important;
+    flex-wrap: wrap; gap: 6px;
+  }
+  .live-badge .lb-time { font-size: 8px; }
+  .hero-headline {
+    font-size: clamp(36px, 9vw, 52px) !important; line-height: 0.88 !important;
+    margin-bottom: 20px !important;
+  }
+  .hero-headline span:first-child {
+    font-size: clamp(12px, 3vw, 14px) !important;
+    letter-spacing: 0.15em !important; margin-bottom: 6px !important;
+  }
+  .hero-headline span:nth-child(2),
+  .hero-headline span:nth-child(3) {
+    font-size: clamp(36px, 11vw, 52px) !important;
+  }
+  .hero p {
+    font-size: 14px !important; margin-bottom: 28px !important;
+    line-height: 1.6 !important;
+  }
+  .btn-primary {
+    padding: 16px 28px !important; font-size: 12px !important;
+    letter-spacing: 0.15em; width: 100%; max-width: 340px;
+    justify-content: center; border-radius: 6px;
+  }
+  .btn-primary svg {
+    width: 20px !important; height: 20px !important;
+  }
+
+  /* ── STATS ROW ── */
+  .stats-row {
+    flex-direction: column; margin-top: 32px;
+  }
+  .stat-item {
+    padding: 16px 20px; border-right: none;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .stat-item:last-child { border-bottom: none; }
+  .stat-num { font-size: 28px; }
+  .stat-label { font-size: 8px; margin-top: 0; }
+
+  /* ── SECTIONS ── */
+  .section { padding: 48px 20px; }
+  .sec-eye { font-size: 8px; letter-spacing: 0.3em; margin-bottom: 8px; }
+  .sec-title { font-size: clamp(28px, 8vw, 40px); margin-bottom: 8px; }
+  .sec-intro { font-size: 14px; margin-bottom: 24px; }
+
+  /* ── URGENCY CARDS: horizontal scroll ── */
+  .urgency-grid {
+    display: flex; overflow-x: auto; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; gap: 0;
+    border: none; background: none;
+    padding-bottom: 12px;
+  }
+  .urgency-grid::-webkit-scrollbar { display: none; }
+  .ug-cell {
+    flex: 0 0 82vw; min-width: 82vw; scroll-snap-align: start;
+    padding: 24px 20px; border: 1px solid var(--border);
+    margin-right: 8px; border-radius: 4px;
+  }
+  .ug-icon { font-size: 20px; margin-bottom: 8px; }
+  .ug-num { font-size: clamp(36px, 10vw, 48px); }
+  .ug-title { font-size: 16px; margin-top: 4px; margin-bottom: 6px; }
+  .ug-desc {
+    font-size: 13px; line-height: 1.5;
+    display: -webkit-box; -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical; overflow: hidden;
+  }
+
+  /* ── FINAL CTA ── */
+  .final-cta {
+    padding: 60px 20px !important;
+  }
+  .final-cta h2 {
+    font-size: clamp(36px, 10vw, 64px) !important; margin-bottom: 24px !important;
+  }
+  .final-cta p {
+    font-size: 9px !important; letter-spacing: 0.25em !important;
+    margin-bottom: 32px !important;
+  }
+  .final-cta .btn-primary {
+    padding: 18px 32px !important; font-size: 14px !important;
+    max-width: 340px; border-radius: 8px;
+    height: auto; letter-spacing: 0.12em;
+  }
+
+  /* ── FEED ── */
+  .feed-container { gap: 12px; }
+  .feed-sidebar { display: none; }
+  .feed-item { padding: 14px 16px; gap: 10px; }
+  .fi-title { font-size: 13px; }
+  .fi-time { font-size: 9px; }
+
+  /* ── CONTACT BOX ── */
+  .contact-box { padding: 28px 20px; }
+  .cb-title { font-size: 24px; }
+
+  /* ── FLOATING WA ── */
+  .float-wa {
+    bottom: 20px; right: 16px; width: 52px; height: 52px;
+  }
+  .float-wa svg { width: 28px; height: 28px; }
+
+  /* ── SAFE AREA ── */
+  .nav { padding-top: env(safe-area-inset-top, 0); }
+  .float-wa { bottom: calc(20px + env(safe-area-inset-bottom, 0)); }
+}
 </style>
 </head>
 <body>
@@ -441,7 +621,14 @@ body::after {
   <div class="nav-status">
     <span>LÍNEA DE GUARDIA ACTIVA</span>
   </div>
-
+  <button class="hamburger" id="hamburgerBtn" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="https://wa.me/5491128011002" target="_blank" class="mobile-menu-cta">CONSULTA URGENTE</a>
+    <div class="mobile-menu-status">● LÍNEA DE GUARDIA ACTIVA</div>
+    <a href="../" class="mobile-menu-link">VOLVER AL INICIO</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -523,6 +710,25 @@ body::after {
 </a>
 
 <script>
+// HAMBURGER MENU
+(function(){
+  const btn = document.getElementById('hamburgerBtn');
+  const menu = document.getElementById('mobileMenu');
+  if(btn && menu){
+    btn.addEventListener('click', function(){
+      btn.classList.toggle('active');
+      menu.classList.toggle('open');
+    });
+    // Close on link click
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        btn.classList.remove('active');
+        menu.classList.remove('open');
+      });
+    });
+  }
+})();
+
 // CLOCK
 function updateClock() {
   const d = new Date();

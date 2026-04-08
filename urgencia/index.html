@@ -489,39 +489,7 @@ body::after {
   </div>
 </section>
 
-<!-- FEED SECTION -->
-<section class="section">
-  <div class="sec-eye">Registro Operativo de Urgencias</div>
-  <h2 class="sec-title">INTERVENCIONES <span class="red">EN TIEMPO REAL</span></h2>
-  <p class="sec-intro">Mantenemos una estructura de guardia preparada para accionar inmediatamente en cualquier punto de CABA o el Gran Buenos Aires ante detenciones, allanamientos o urgencias penales.</p>
 
-  <div class="feed-container">
-    <div class="feed-main" id="feedMain">
-      <!-- Inyectado por JS -->
-    </div>
-    
-    <div class="feed-sidebar">
-      <div class="sidebar-panel">
-        <div class="sp-title">TIEMPO LOCAL (CABA)</div>
-        <div class="live-clock" id="liveClock">00:00:00</div>
-        <div class="clock-date" id="liveDate">DIA, FECHA</div>
-        <div class="clock-status"><div class="csdot"></div>SISTEMA DE ASIGNACIÓN ACTIVO</div>
-      </div>
-      <div class="sidebar-panel">
-        <div class="crash-counter">
-          <span class="cc-num" id="activeCases">12</span>
-          <span class="cc-label">INTERVENCIONES ACTIVAS HOY</span>
-        </div>
-        <div class="gauge-row" style="margin-top: 20px;">
-          <div class="gauge-item">
-            <div class="gauge-label"><span>DISPONIBILIDAD ABOGADOS</span> <span class="gauge-val">ALTA</span></div>
-            <div class="gauge-bar"><div class="gauge-fill green" style="width: 85%;"></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- WHY NOW -->
 <section class="section section-alt">
@@ -572,62 +540,12 @@ function updateClock() {
                   d.getMinutes().toString().padStart(2,'0') + ':' + 
                   d.getSeconds().toString().padStart(2,'0');
   
-  document.getElementById('liveClock').textContent = timeStr;
-  document.getElementById('heroClock').textContent = timeStr;
-
-  const days = ['DOMINGO','LUNES','MARTES','MIÉRCOLES','JUEVES','VIERNES','SÁBADO'];
-  const months = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'];
-  document.getElementById('liveDate').textContent = `${days[d.getDay()]}, ${d.getDate()} ${months[d.getMonth()]}`;
+  if (document.getElementById('heroClock')) {
+    document.getElementById('heroClock').textContent = timeStr;
+  }
 }
 setInterval(updateClock, 1000);
 updateClock();
-
-// INCIDENT FEED SIMULATION
-const incidents = [
-  { type: "ALERTA DETENCIÓN", title: "Asistencia requerida en Comisaría Vecinal 1A", meta: "Microcentro, CABA", badge: "URGENTE", badgeCls: "urgent" },
-  { type: "EXCARCELACIÓN", title: "Presentación de escrito de hábeas corpus preventivo", meta: "Juzgado de Garantías 2, San Isidro", badge: "ACTIVO", badgeCls: "active" },
-  { type: "ALLANAMIENTO", title: "Acompañamiento presencial durante orden de registro", meta: "Palermo, CABA", badge: "PENDIENTE", badgeCls: "pending" },
-  { type: "CONSULTA URGENTE", title: "Revisión de causa por estupefacientes", meta: "Lomas de Zamora", badge: "URGENTE", badgeCls: "urgent" },
-  { type: "DESPLIEGUE PENAL", title: "Socio asignado en camino a Fiscalía en turno", meta: "Avellaneda", badge: "ACTIVO", badgeCls: "active" }
-];
-
-let feedItems = [ incidents[1], incidents[2], incidents[4] ];
-const feedMain = document.getElementById('feedMain');
-
-function renderFeed(isNew = false) {
-  feedMain.innerHTML = '';
-  feedItems.forEach((inc, idx) => {
-    const d = new Date(Date.now() - (idx * 15 * 60000));
-    const timeStr = d.getHours().toString().padStart(2,'0') + ':' + d.getMinutes().toString().padStart(2,'0');
-    const cl = (isNew && idx === 0) ? 'new' : '';
-    feedMain.innerHTML += `
-      <div class="feed-item ${cl}">
-        <div class="fi-time">${timeStr}</div>
-        <div class="fi-content">
-          <div class="fi-type">${inc.type}</div>
-          <div class="fi-title">${inc.title}</div>
-          <div class="fi-meta">${inc.meta}</div>
-        </div>
-        <div class="fi-badge ${inc.badgeCls}">${inc.badge}</div>
-      </div>
-    `;
-  });
-}
-renderFeed();
-
-// SIMULATE NEW INCIDENTS
-setInterval(() => {
-  const nextInc = incidents[Math.floor(Math.random() * incidents.length)];
-  feedItems.unshift(nextInc);
-  if(feedItems.length > 4) feedItems.pop();
-  renderFeed(true);
-  
-  // Randomly update the active cases counter
-  const cc = document.getElementById('activeCases');
-  let val = parseInt(cc.textContent);
-  if(Math.random() > 0.5) val = val < 20 ? val + 1 : 8;
-  cc.textContent = val;
-}, 8000); // Rotates every 8 seconds
 
 // WHATSAPP QUCIK FORM
 const urgencyForm = document.getElementById('urgencyForm');

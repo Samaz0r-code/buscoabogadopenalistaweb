@@ -453,6 +453,8 @@ body::after {
   <div class="hero-inner">
     <div class="live-badge">
       <div class="lb-dot"></div>
+      <span id="heroClock" style="color: var(--white); font-weight: 700;">00:00:00</span>
+      <span style="opacity: 0.3; margin: 0 2px;">|</span>
       <span>GUARDIA JURÍDICA EN LÍNEA</span>
       <span class="lb-time">TIEMPO RESPUESTA: 5 MIN</span>
     </div>
@@ -569,10 +571,12 @@ body::after {
 // CLOCK
 function updateClock() {
   const d = new Date();
-  document.getElementById('liveClock').textContent = 
-    d.getHours().toString().padStart(2,'0') + ':' + 
-    d.getMinutes().toString().padStart(2,'0') + ':' + 
-    d.getSeconds().toString().padStart(2,'0');
+  const timeStr = d.getHours().toString().padStart(2,'0') + ':' + 
+                  d.getMinutes().toString().padStart(2,'0') + ':' + 
+                  d.getSeconds().toString().padStart(2,'0');
+  
+  document.getElementById('liveClock').textContent = timeStr;
+  document.getElementById('heroClock').textContent = timeStr;
 
   const days = ['DOMINGO','LUNES','MARTES','MIÉRCOLES','JUEVES','VIERNES','SÁBADO'];
   const months = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'];

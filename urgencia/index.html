@@ -136,19 +136,30 @@ body::after {
   display: flex; align-items: center; padding: 0 32px; height: 52px;
   justify-content: space-between;
 }
-.nav-logo {
-  display: flex; align-items: center; gap: 12px;
-  text-decoration: none;
+.nav-logo { display:none; }
+.nav-brand {
+  display:flex; align-items:center; gap:14px;
+  text-decoration:none;
 }
-.nav-logo span {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 20px; font-weight: 700; letter-spacing: 0.05em;
-  color: var(--white); text-transform: uppercase;
+.nav-brand-mark {
+  width:48px; height:32px;
+  border:1px solid var(--red);
+  display:flex; align-items:center; justify-content:center;
+  font-family: 'Barlow Condensed', sans-serif; font-size:14px; font-weight:700;
+  color:var(--red); letter-spacing:0.03em;
 }
-.nav-logo .dot {
-  width: 10px; height: 10px; border-radius: 50%; background: var(--red);
-  box-shadow: 0 0 10px var(--red), 0 0 20px var(--red-glow);
-  animation: pulse-dot 2s ease-in-out infinite;
+.nav-brand-text {
+  display:flex; flex-direction:column;
+}
+.nav-brand-name {
+  font-family: 'Barlow Condensed', sans-serif; font-size:17px; font-weight:700;
+  letter-spacing:0.12em; text-transform:uppercase;
+  color:var(--white); line-height: 1.2;
+}
+.nav-brand-sub {
+  font-family: 'Barlow Condensed', sans-serif; font-size:10px;
+  letter-spacing:0.15em; text-transform:uppercase;
+  color:var(--muted); opacity:0.8; line-height:1;
 }
 .nav-status {
   font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase;
@@ -422,9 +433,12 @@ body::after {
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="../" class="nav-logo">
-    <div class="dot"></div>
-    <span>BAP - BUSCOABOGADOPENALISTA.COM</span>
+  <a href="../" class="nav-brand">
+    <div class="nav-brand-mark">BAP.</div>
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">buscoabogadopenalista.com</span>
+      <span class="nav-brand-sub">Derecho Penal · Atención Inmediata · Buenos Aires</span>
+    </div>
   </a>
   <div class="nav-status">
     <span>LÍNEA DE GUARDIA ACTIVA</span>

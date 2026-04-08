@@ -36,10 +36,10 @@
 </script>
 <style>
 :root {
-  --bg: #0c0c0e;
-  --bg2: #131316;
-  --bg-card: #1c1c21;
-  --red: #c8960c; /* Mapeado a Oro para mantener clases pero estética Home */
+  --bg: #000000;
+  --bg2: #000000;
+  --bg-card: #08080a;
+  --red: #c8960c; 
   --red2: #e8b830;
   --red-dim: rgba(200,150,12,0.12);
   --red-glow: rgba(200,150,12,0.35);
@@ -86,8 +86,7 @@ body::before {
 body::after {
   content: '';
   position: fixed; inset: 0; z-index: 0;
-  background: radial-gradient(ellipse 120% 80% at 50% 0%, rgba(200,150,12,0.07) 0%, transparent 60%),
-              radial-gradient(ellipse 80% 60% at 50% 100%, rgba(200,150,12,0.05) 0%, transparent 55%);
+  background: transparent;
   pointer-events: none;
 }
 
@@ -191,9 +190,7 @@ body::after {
   100% { background-position: 0 100px; }
 }
 .hero-glow {
-  position: absolute; top: 0; left: -20%; z-index: 0; width: 140%; height: 100%;
-  background: radial-gradient(ellipse 60% 50% at 30% 40%, rgba(200,150,12,0.08) 0%, transparent 70%);
-  animation: sweep 12s ease-in-out infinite alternate; pointer-events: none;
+  display: none;
 }
 @keyframes sweep {
   0% { transform: translateX(0) scaleX(1); }

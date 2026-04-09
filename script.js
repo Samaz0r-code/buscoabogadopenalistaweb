@@ -283,21 +283,3 @@ ${message}`;
     });
   }
 });
-
-// =================== HAMBURGER MENU (HOME) ===================
-(function(){
-  const btn = document.getElementById('hamburgerBtn');
-  const menu = document.getElementById('mobileMenu');
-  if(btn && menu){
-    btn.addEventListener('click', function(){
-      btn.classList.toggle('active');
-      menu.classList.toggle('open');
-    });
-    menu.querySelectorAll('a').forEach(function(a){
-      a.addEventListener('click', function(){
-        btn.classList.remove('active');
-        menu.classList.remove('open');
-      });
-    });
-  }
-})();

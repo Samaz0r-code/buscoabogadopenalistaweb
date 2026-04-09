@@ -1332,7 +1332,7 @@ body > * { position:relative; z-index:1; }
   .ai-grid { grid-template-columns:1fr; }
   .ai-right { border-left:none; border-top:1px solid var(--border); }
   #hero { grid-template-columns:1fr; min-height:auto; }
-  .hero-right { height: 65vw; }
+  .hero-right { height: 75vw; }
   .hero-right::after { background:linear-gradient(to top, var(--bg) 0%, transparent 40%); }
   .hero-left { padding:72px 6vw 60px; position:relative; z-index:2; margin-top:-80px; }
   #about { grid-template-columns:1fr; }
@@ -1365,7 +1365,7 @@ body > * { position:relative; z-index:1; }
   /* ── HERO ── */
   #hero { padding-top: 56px !important; min-height: auto; }
   .hero-left { padding: 60px 20px 40px; margin-top: -40px; }
-  .hero-right { height: 70vw; }
+  .hero-right { height: 85vw; }
   .hero-year { font-size: 11px; letter-spacing: 0.3em; margin-bottom: 24px; }
   .hero-year::before { width: 24px; }
   .hero-h1 { font-size: clamp(28px, 8vw, 40px) !important; }
@@ -1379,7 +1379,7 @@ body > * { position:relative; z-index:1; }
     justify-content: center;
   }
   .btn-outline { display: none; }
-  .hero-img { object-position: center center; }
+  .hero-img { object-position: 90% 20%; }
   .hero-scroll-hint { display: none; }
 
   /* ── SPEED BADGES ── */

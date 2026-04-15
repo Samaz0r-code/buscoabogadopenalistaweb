@@ -437,44 +437,54 @@ body::after {
 
   /* ── HERO: compact ── */
   .hero {
-    padding: 80px 20px 50px; min-height: auto;
+    padding: 120px 24px 60px; min-height: 100vh; justify-content: center;
   }
   .hero-inner {
     padding: 0 !important;
   }
   .hero-bg {
-    height: 85vw;
-    object-position: 90% 10%;
-    transform: scale(1.1); transform-origin: center;
-    filter: brightness(0.2) contrast(1.15) sepia(20%) saturate(1.1);
+    height: 100%; width: 100%;
+    object-position: 85% 20%;
+    transform: scale(1);
+    filter: brightness(0.4) contrast(1.15) sepia(10%) saturate(1.2);
   }
   .live-badge {
     font-size: 8px; letter-spacing: 0.2em;
-    padding: 5px 10px; margin-bottom: 24px !important;
-    flex-wrap: wrap; gap: 6px;
+    padding: 12px 16px; margin-bottom: 32px !important;
+    background: transparent !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    border-radius: 4px !important;
+    display: flex !important; flex-wrap: wrap !important; gap: 6px !important;
+    align-items: center; width: fit-content;
   }
-  .live-badge .lb-time { font-size: 8px; }
+  .live-badge .lb-dot { display: none; }
+  .live-badge span:nth-of-type(3) { color: var(--red) !important; }
+  .live-badge .lb-time { font-size: 8px; width: 100%; margin-top: 2px; color: var(--muted) !important; opacity: 1 !important; }
+  
   .hero-headline {
-    font-size: clamp(36px, 9vw, 52px) !important; line-height: 0.88 !important;
-    margin-bottom: 20px !important;
+    font-size: clamp(44px, 14vw, 56px) !important; line-height: 0.85 !important;
+    margin-bottom: 24px !important;
   }
   .hero-headline span:first-child {
-    font-size: clamp(12px, 3vw, 14px) !important;
-    letter-spacing: 0.15em !important; margin-bottom: 6px !important;
+    font-size: clamp(14px, 4vw, 16px) !important;
+    letter-spacing: 0.05em !important; margin-bottom: 4px !important;
+    color: var(--red) !important; opacity: 1 !important; text-shadow: none !important;
   }
   .hero-headline span:nth-child(2),
   .hero-headline span:nth-child(3) {
-    font-size: clamp(36px, 11vw, 52px) !important;
+    font-size: clamp(48px, 15vw, 64px) !important;
   }
   .hero p {
-    font-size: 14px !important; margin-bottom: 28px !important;
-    line-height: 1.6 !important;
+    font-size: 15px !important; margin-bottom: 36px !important;
+    line-height: 1.6 !important; padding-right: 10px;
   }
   .btn-primary {
-    padding: 16px 28px !important; font-size: 12px !important;
-    letter-spacing: 0.15em; width: 100%; max-width: 340px;
-    justify-content: center; border-radius: 6px;
+    padding: 18px 24px !important; font-size: 13px !important;
+    letter-spacing: 0.1em; width: 100%; max-width: none;
+    justify-content: center; border-radius: 8px !important;
+    box-shadow: none !important; background: var(--red) !important;
   }
+  .btn-primary::after { display: none !important; }
   .btn-primary svg {
     width: 20px !important; height: 20px !important;
   }

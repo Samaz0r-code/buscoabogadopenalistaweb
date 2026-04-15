@@ -443,10 +443,12 @@ body::after {
     padding: 0 !important;
   }
   .hero-bg {
-    height: 100%; width: 100%;
-    object-position: 85% 20%;
-    transform: scale(1);
-    filter: brightness(0.4) contrast(1.15) sepia(10%) saturate(1.2);
+    height: 480px; width: 100%;
+    object-position: 100% 15%;
+    transform: none;
+    filter: brightness(0.85) contrast(1.1) sepia(5%) saturate(1.2);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
   }
   .live-badge {
     font-size: 8px; letter-spacing: 0.2em;
@@ -462,8 +464,8 @@ body::after {
   .live-badge .lb-time { font-size: 8px; width: 100%; margin-top: 2px; color: var(--muted) !important; opacity: 1 !important; }
   
   .hero-headline {
-    font-size: clamp(44px, 14vw, 56px) !important; line-height: 0.85 !important;
-    margin-bottom: 24px !important;
+    font-size: clamp(40px, 12vw, 52px) !important; line-height: 0.85 !important;
+    margin-bottom: 24px !important; position: relative; z-index: 2;
   }
   .hero-headline span:first-child {
     font-size: clamp(14px, 4vw, 16px) !important;
@@ -472,17 +474,18 @@ body::after {
   }
   .hero-headline span:nth-child(2),
   .hero-headline span:nth-child(3) {
-    font-size: clamp(48px, 15vw, 64px) !important;
+    font-size: clamp(42px, 12.5vw, 56px) !important;
   }
   .hero p {
     font-size: 15px !important; margin-bottom: 36px !important;
-    line-height: 1.6 !important; padding-right: 10px;
+    line-height: 1.6 !important; max-width: 95%; position: relative; z-index: 2;
   }
   .btn-primary {
     padding: 18px 24px !important; font-size: 13px !important;
     letter-spacing: 0.1em; width: 100%; max-width: none;
     justify-content: center; border-radius: 8px !important;
     box-shadow: none !important; background: var(--red) !important;
+    position: relative; z-index: 2;
   }
   .btn-primary::after { display: none !important; }
   .btn-primary svg {

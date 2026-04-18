@@ -249,6 +249,22 @@ function removeTyping() {
   if (t) t.remove();
 }
 
+// =================== WHATSAPP FUNCTION ===================
+window.enviarAWhatsApp = function(mensaje = "") {
+  const telefono = "5491133181003";
+  const esMovil = /iPhone|Android|iPad|iPod/i.test(navigator.userAgent);
+  const texto = encodeURIComponent(mensaje);
+  
+  let url = "";
+  if (esMovil) {
+    url = `whatsapp://send?phone=${telefono}&text=${texto}`;
+  } else {
+    url = `https://web.whatsapp.com/send?phone=${telefono}&text=${texto}`;
+  }
+  
+  window.open(url, '_blank');
+};
+
 // =================== WHATSAPP FORM SUBMISSION ===================
 document.addEventListener('DOMContentLoaded', () => {
   const contactForm = document.getElementById('contactForm');
@@ -261,22 +277,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const service = this.elements['service'].value;
       const message = this.elements['message'].value.trim();
 
-      const whatsappNumber = '5491133181003'; // Número de WhatsApp del sitio
+      const text = `Hola, quiero hacer una consulta profesional.\n\n*Email:* ${email}\n*Teléfono:* ${phone}\n*Tipo de causa:* ${service}\n\n*Mensaje:*\n${message}`;
 
-      const text = `Hola, quiero hacer una consulta profesional.
-
-*Email:* ${email}
-*Teléfono:* ${phone}
-*Tipo de causa:* ${service}
-
-*Mensaje:*
-${message}`;
-
-      const encodedText = encodeURIComponent(text);
-      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedText}`;
-
-      // Abrir WhatsApp en una nueva pestaña
-      window.open(whatsappUrl, '_blank');
+      // Usar la función global de WhatsApp
+      window.enviarAWhatsApp(text);
 
       // Opcional: limpiar el formulario después de enviarlo
       this.reset();
